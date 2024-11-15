@@ -29,6 +29,17 @@ struct Client{
     int active;
 };
 
+struct Spare{
+    int id_spare;
+    string model;
+    string brand;
+    string spare_name;
+    string car_model;
+    int car_year;
+    int price;
+    int existences;
+};
+
 void menu();
 
 void AgregarCarro();
