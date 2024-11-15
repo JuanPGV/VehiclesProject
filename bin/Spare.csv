@@ -1,0 +1,40 @@
+id_spare,model,brand,spare_name,car_model,car_year,price,existences
+1,brake pad,AC Delco,Silver Battery,Ford F-150,1992,255,36
+2,brake pad,Michelin,Silver Battery,BMW 3 Series,2007,142,89
+3,brake pad,Michelin,High Flow Air Filter,Chevrolet Silverado,2003,327,77
+4,battery,Fram,Performance Brake Pad,Chevrolet Silverado,1983,455,31
+5,air filter,Fram,Platinum Spark Plug,Chevrolet Silverado,2016,67,12
+6,spark plug,NGK,Premium Tire,Ford F-150,1985,330,62
+7,battery,AC Delco,Silver Battery,Chevrolet Silverado,1985,257,37
+8,spark plug,Bosch,High Flow Air Filter,Ford F-150,2000,295,32
+9,brake pad,Fram,Premium Tire,Chevrolet Silverado,1984,493,5
+10,air filter,Fram,High Flow Air Filter,Honda Civic,2014,337,35
+11,battery,Fram,Premium Tire,Honda Civic,1976,227,31
+12,battery,NGK,Premium Tire,Ford F-150,1990,403,98
+13,air filter,Fram,Silver Battery,Honda Civic,1976,111,91
+14,air filter,Bosch,Silver Battery,Toyota Camry,1975,332,13
+15,tire,AC Delco,High Flow Air Filter,Honda Civic,2023,179,51
+16,air filter,NGK,Silver Battery,BMW 3 Series,2021,25,67
+17,tire,Fram,Premium Tire,Honda Civic,2003,269,12
+18,battery,Michelin,Performance Brake Pad,Toyota Camry,2003,79,90
+19,tire,AC Delco,Platinum Spark Plug,Toyota Camry,1977,298,76
+20,tire,AC Delco,High Flow Air Filter,BMW 3 Series,2000,218,79
+21,brake pad,AC Delco,Performance Brake Pad,Honda Civic,2012,259,2
+22,air filter,Fram,Premium Tire,Ford F-150,2005,97,10
+23,tire,Bosch,Performance Brake Pad,Toyota Camry,1987,232,80
+24,battery,Bosch,Performance Brake Pad,Ford F-150,2018,151,32
+25,battery,Fram,Performance Brake Pad,Honda Civic,1999,186,78
+26,battery,NGK,Platinum Spark Plug,Chevrolet Silverado,1977,359,4
+27,battery,Fram,Platinum Spark Plug,Toyota Camry,1976,488,98
+28,spark plug,Bosch,High Flow Air Filter,Toyota Camry,2021,459,74
+29,brake pad,Fram,Platinum Spark Plug,Chevrolet Silverado,1976,35,76
+30,spark plug,AC Delco,Silver Battery,Toyota Camry,1977,482,79
+31,tire,AC Delco,Platinum Spark Plug,Honda Civic,2018,341,49
+32,air filter,Fram,High Flow Air Filter,Ford F-150,1992,310,1
+33,brake pad,AC Delco,Platinum Spark Plug,Chevrolet Silverado,2016,140,27
+34,battery,Fram,Platinum Spark Plug,Ford F-150,1993,477,53
+35,battery,NGK,Performance Brake Pad,Chevrolet Silverado,2003,403,78
+36,air filter,NGK,Premium Tire,Honda Civic,1996,134,74
+37,spark plug,NGK,Premium Tire,BMW 3 Series,2007,408,32
+38,battery,NGK,High Flow Air Filter,Ford F-150,1992,183,26
+39,tire,Michelin,Premium Tire,Toyota Camry,1989,87,25
