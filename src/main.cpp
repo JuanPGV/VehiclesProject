@@ -249,6 +249,33 @@ void ConsultarCarro(){
     CarsFile.close();
 }
 
+void AgregarCliente(){
+    Client c;
+    string line;
+
+    cout << "Ingrese los siguientes datos:" << endl;
+    cout<<"Cedula: ";
+    cin>>c.id_client;
+    cout << "Nombre: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, c.first_name);
+    cout << "Apellido: ";
+    getline(cin, c.last_name);
+    cout << "Email: ";
+    getline(cin, c.email);
+    cout << "Vehiculos rentados: ";
+    cin>> c.rented_vehicles;
+    cout << "Direccion: ";
+    cin >> c.direction;
+    cout << "Activo: ";
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin >> c.active;
+
+    ofstream ClientsFile2("bin/Clients.csv", ios::app);
+    ClientsFile2 << c.id_client << "," << c.first_name << "," << c.last_name << "," << c.email << "," << c.rented_vehicles << "," << c.direction << "," << c.active <<endl;
+    ClientsFile2.close();
+    cout<<"Cliente agregado con exito"<<endl;
+}
 
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
