@@ -19,6 +19,16 @@ struct Car{
     int id_client;
 };
 
+struct Client{
+    int id_client;
+    string first_name;
+    string last_name;
+    string email;
+    int rented_vehicles;
+    string direction;
+    int active;
+};
+
 void menu();
 
 void AgregarCarro();
