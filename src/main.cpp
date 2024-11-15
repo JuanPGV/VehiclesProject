@@ -277,6 +277,31 @@ void AgregarCliente(){
     cout<<"Cliente agregado con exito"<<endl;
 }
 
+void EliminarCliente(){
+    Client c;
+    string line;
+    ifstream ClientsFile("bin/Clients.csv", ios::in);
+    ofstream Temp("bin/Temp.csv",ios::out);
+
+    cout<<"Ingrese el id del cliente que desea eliminar: ";
+    cin>>c.id_client;
+
+    while(getline(ClientsFile,line)){
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id!=c.id_client){
+            Temp<<line<<endl;
+        }
+    }
+
+    ClientsFile.close();
+    Temp.close();
+
+    remove("bin/Clients.csv");
+    rename("bin/Temp.csv","bin/Clients.csv");
+    cout<<"Cliente eliminado correctamente"<<endl;
+}
+
+
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
