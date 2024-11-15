@@ -26,9 +26,19 @@ void EliminarCarro();
 void ActualizarCarro();
 void ConsultarCarro();
 
+void AgregarCliente();
+void EliminarCliente();
+void ActualizarCliente();
+void ConsultarCliente();
+
+void AgregarRepuesto();
+void EliminarRepuesto();
+void ActualizarRepuesto();
+void ConsultarRepuesto();
+
 
 int main(){
-
+menu();
 }
 
 void AgregarCarro(){
@@ -73,3 +83,119 @@ void AgregarCarro(){
     CarsFile2.close();
     cout<<"Carro agregado con exito"<<endl;
     }
+
+void menu(){
+    int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
+     cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
+    while(opcion!=5){
+    cout<<"Ingrese una opcion"<<endl
+    <<"1.-Agregar"<<endl
+    <<"2.-Borrar"<<endl
+    <<"3.-Actualizar"<<endl
+    <<"4.-Consultar"<<endl
+    <<"5.-Salir"<<endl;
+    cin>>opcion;
+   
+    switch (opcion)
+    {
+    case 1:
+            cout<<"En que archivo desea agregar un elemento?"<<endl
+            <<"1.-Carros"<<endl
+            <<"2.-Clientes"<<endl
+            <<"3.-Repuestos"<<endl;
+            cin>>opcion2;
+
+        if(opcion2==1){
+            AgregarCarro();
+        }
+        else if(opcion2==2){
+            AgregarCliente();
+        }
+        else if(opcion2==3){
+            AgregarRepuesto();
+        }
+        else{
+            cout<<"Por favor ingrese un numero valido"<<endl;
+        }
+    
+        break;
+    
+    case 2:
+        while(opcion3<1 or opcion3>3){
+            cout<<"En que archivo desea eliminar un elemento?"<<endl
+            <<"1.-Carros"<<endl
+            <<"2.-Clientes"<<endl
+            <<"3.-Repuestos"<<endl;
+            cin>>opcion3;
+
+        if(opcion3==1){
+            EliminarCarro();
+        }
+        else if(opcion3==2){
+            EliminarCliente();
+        }
+        else if(opcion3==3){
+            EliminarRepuesto();
+        }
+        else{
+            cout<<"Por favor ingrese un numero valido"<<endl;
+        }
+    }
+        break;
+
+
+    case 3:
+        while(opcion4<1 or opcion4>3){
+            cout<<"En que archivo desea actualizar un elemento?"<<endl
+            <<"1.-Carros"<<endl
+            <<"2.-Clientes"<<endl
+            <<"3.-Repuestos"<<endl;
+            cin>>opcion4;
+
+        if(opcion4==1){
+           ActualizarCarro();
+        }
+        else if(opcion4==2){
+            ActualizarCliente();
+        }
+        else if(opcion4==3){
+            ActualizarRepuesto();
+        }
+        else{
+            cout<<"Por favor ingrese un numero valido"<<endl;
+        }
+    }
+        break;
+
+    case 4:
+        while(opcion5<1 or opcion5>3){
+            cout<<"En que archivo desea hacer una consulta?"<<endl
+            <<"1.-Carros"<<endl
+            <<"2.-Clientes"<<endl
+            <<"3.-Repuestos"<<endl;
+            cin>>opcion5;
+
+        if(opcion5==1){
+            ConsultarCarro();
+        }
+        else if(opcion5==2){
+            ConsultarCliente();
+        }
+        else if(opcion5==3){
+            ConsultarRepuesto();
+        }
+        else{
+            cout<<"Por favor ingrese un numero valido"<<endl;
+        }
+    }
+        break;
+    
+    case 5:
+        cout<<"Gracias por visitarnos:)"<<endl;
+        break;
+    default:
+        cout<<"Por favor ingrese un numero dentro del rango"<<endl;
+        break;
+    }
+}
+}
