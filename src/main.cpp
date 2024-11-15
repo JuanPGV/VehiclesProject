@@ -84,6 +84,33 @@ void AgregarCarro(){
     cout<<"Carro agregado con exito"<<endl;
     }
 
+void EliminarCarro(){
+    Car c;
+    string line;
+    cout<<"Ingrese el id del carro que desea eliminar: "<<endl;
+    cin>>c.id;
+    ofstream Temp("bin/Temp.csv", ios::out);
+    if(!Temp){
+        cout<<"El archivo temporal no se abrio correctamente"<<endl;
+    }
+    ifstream Carsfile("bin/Cars.csv", ios::in);
+    if(!Carsfile){
+        cout<<"El archivo de carros no se abrio correctamente"<<endl;
+    }
+    while(getline(Carsfile,line)){
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id != c.id){
+            Temp<<line<<endl;
+        }
+    }
+    Temp.close();
+    Carsfile.close();
+
+    remove("bin/Cars.csv");
+    rename("bin/Temp.csv","bin/Cars.csv");
+    cout<<"Carro eliminado con exito"<<endl;
+}
+
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
