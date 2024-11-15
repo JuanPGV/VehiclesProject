@@ -169,6 +169,75 @@ void ActualizarCarro(){
     }
 }
 
+void ConsultarCarro(){
+    Car c;
+    string line;
+    cout<<"Ingrese el id del carro del que desea hacer la consulta: ";
+    cin>>c.id;
+
+    ifstream CarsFile("bin/Cars.csv");
+    while(getline(CarsFile,line)){
+        size_t pos = 0;
+        size_t next_pos = line.find(',');
+
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id==c.id){
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.model = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.brand = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.plate = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.color = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.year = stoi(line.substr(pos, next_pos - pos));
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.mileage = stoi(line.substr(pos, next_pos - pos));
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.was_rented = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.engine = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.price = stof(line.substr(pos, next_pos - pos));
+            pos = next_pos + 1;
+
+            c.id_client = stoi(line.substr(pos));
+
+            cout << "ID: " << c.id << endl;
+            cout << "Modelo: " << c.model << endl;
+            cout << "Marca: " << c.brand << endl;
+            cout << "Placa: " << c.plate << endl;
+            cout << "Color: " << c.color << endl;
+            cout << "Anio: " << c.year << endl;
+            cout << "Kilometraje: " << c.mileage << endl;
+            cout << "Rentado: " << c.was_rented << endl;
+            cout << "Motor: " << c.engine << endl;
+            cout << "Precio: " << c.price << endl;
+            cout << "ID Cliente: " << c.id_client << endl;
+        }
+    }
+    CarsFile.close();
+}
+
 
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
