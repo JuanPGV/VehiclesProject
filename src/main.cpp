@@ -121,6 +121,55 @@ void EliminarCarro(){
     cout<<"Carro eliminado con exito"<<endl;
 }
 
+void ActualizarCarro(){
+    Car c;
+    string line;
+    cout<<"Ingrese el id del carro que quiere actualizar"<<endl;
+    cin>>c.id;
+    ifstream CarsFile("bin/Cars.csv", ios::in);
+    ofstream Temp("bin/Temp.csv",ios::out);
+    while(getline(CarsFile,line)){
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id!=c.id){
+            Temp<<line<<endl;
+        }
+        else{
+            cout << "Modelo: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, c.model);
+            cout << "Marca: ";
+            getline(cin, c.brand);
+            cout << "Placa: ";
+            getline(cin, c.plate);
+            cout << "Color: ";
+            getline(cin , c.color);
+            cout << "Ano: ";
+            cin >> c.year;
+            cout << "Kilometraje: ";
+            cin >> c.mileage;
+            cout << "Rentado: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, c.was_rented);
+            cout << "Motor: ";
+            getline(cin , c.engine);
+            cout << "Precio: ";
+            cin >> c.price;
+            cout<< "ID cliente: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin>> c.id_client;
+
+            Temp << c.id << "," << c.model << "," << c.brand << "," << c.plate << "," << c.color << "," << c.year << "," << c.mileage << "," << c.was_rented << "," << c.engine << "," << c.price << "," << c.id_client <<endl;
+            Temp.close();
+            CarsFile.close();
+
+            remove("bin/Cars.csv");
+            rename("bin/Temp.csv","bin/Cars.csv");
+            cout<<"Carro actualizado de forma exitosa"<<endl;
+        }
+    }
+}
+
+
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
