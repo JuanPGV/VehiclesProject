@@ -4,8 +4,10 @@ BIENVENIDO A VENTA DE CARROS EL TORITO
 teniendo las funciones CRUD, maneja tres archivos csv los cuales contienen
 clientes, carros a rentar y repuestos de carros.
 
-Comando para ejecutar:
+Comando para compilar:
+ g++ main.cpp -o ../bin/main.exe
 
+ Comando para ejecutar:
 .\bin\main.exe
 
 Proyecto realizado por:
