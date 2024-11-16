@@ -301,6 +301,40 @@ void EliminarCliente(){
     cout<<"Cliente eliminado correctamente"<<endl;
 }
 
+void AgregarRepuesto(){
+    Spare s;
+    string line;
+    int new_id = 0;
+    ifstream SpareFile("bin/Spare.csv");
+    while(getline(SpareFile,line)){
+        new_id++;   
+    }
+    SpareFile.close();
+
+    cout << "Ingrese los siguientes datos:" << endl;
+    cout<<"Modelo: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin,s.model);
+    cout << "Marca: ";
+    getline(cin, s.brand);
+    cout << "Nombre repuesto: ";
+    getline(cin, s.spare_name);
+    cout << "Modelo de carro al que le sirve el repuesto: ";
+    getline(cin, s.car_model);
+    cout << "Anio del carro al que le sirve el repuesto: ";
+    cin>> s.car_year;
+    cout << "Precio: ";
+    cin >> s.price;
+    cout << "Cantidad de repuestos disponibles: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin >> s.existences;
+    s.id_spare = new_id;
+
+    ofstream SpareFile2("bin/Spare.csv", ios::app);
+    SpareFile2 << s.id_spare << "," << s.model << "," << s.brand << "," << s.spare_name << "," << s.car_model << "," << s.car_year << "," << s.price << "," << s.existences  <<endl;
+    SpareFile2.close();
+    cout<<"Repuesto agregado con exito"<<endl;
+}
 
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
