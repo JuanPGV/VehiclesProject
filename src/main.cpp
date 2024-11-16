@@ -359,6 +359,47 @@ void EliminarRepuesto(){
     cout<<"Repuesto eliminado con exito"<<endl;
 }
 
+void ActualizarRepuesto(){
+    Spare s;
+    string line;
+    cout<<"Ingrese el id del repuesto que quiere actualizar"<<endl;
+    cin>>s.id_spare;
+    ifstream SpareFile("bin/Spare.csv", ios::in);
+    ofstream Temp("bin/Temp.csv",ios::out);
+    while(getline(SpareFile,line)){
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id!=s.id_spare){
+            Temp<<line<<endl;
+        }
+        else{
+            cout << "Ingrese los siguientes datos:" << endl;
+            cout<<"Modelo: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin,s.model);
+            cout << "Marca: ";
+            getline(cin, s.brand);
+            cout << "Nombre repuesto: ";
+            getline(cin, s.spare_name);
+            cout << "Modelo de carro al que le sirve el repuesto: ";
+            getline(cin, s.car_model);
+            cout << "Anio del carro al que le sirve el repuesto: ";
+            cin>> s.car_year;
+            cout << "Precio: ";
+            cin >> s.price;
+            cout << "Cantidad de repuestos disponibles: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> s.existences;
+
+            Temp << s.id_spare << "," << s.model << "," << s.brand << "," << s.spare_name << "," << s.car_model << "," << s.car_year << "," << s.price << "," << s.existences  <<endl;
+            Temp.close();
+            SpareFile.close();
+            remove("bin/Spare.csv");
+            rename("bin/Temp.csv","bin/Spare.csv");
+            cout<<"Repuesto actualizado de forma exitosa"<<endl;
+        }
+    }
+}
+
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
