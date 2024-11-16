@@ -301,6 +301,45 @@ void EliminarCliente(){
     cout<<"Cliente eliminado correctamente"<<endl;
 }
 
+void ActualizarCliente(){
+    Client c;
+    string line;
+    cout<<"Ingrese la cedula del cliente que quiere actualizar"<<endl;
+    cin>>c.id_client;
+    ifstream ClientsFile("bin/Clients.csv", ios::in);
+    ofstream Temp("bin/Temp.csv",ios::out);
+    while(getline(ClientsFile,line)){
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id!=c.id_client){
+            Temp<<line<<endl;
+        }
+        else{
+            cout << "Ingrese los siguientes datos:" << endl;
+            cout << "Nombre: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, c.first_name);
+            cout << "Apellido: ";
+            getline(cin, c.last_name);
+            cout << "Email: ";
+            getline(cin, c.email);
+            cout << "Vehiculos rentados: ";
+            cin>> c.rented_vehicles;
+            cout << "Direccion: ";
+            cin >> c.direction;
+            cout << "Activo: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> c.active;
+
+            Temp << c.id_client << "," << c.first_name << "," << c.last_name << "," << c.email << "," << c.rented_vehicles << "," << c.direction << "," << c.active <<endl;
+            Temp.close();
+            ClientsFile.close();
+            remove("bin/Clients.csv");
+            rename("bin/Temp.csv","bin/Clients.csv");
+            cout<<"Cliente actualizado de forma exitosa"<<endl;
+        }
+    }
+}
+
 void AgregarRepuesto(){
     Spare s;
     string line;
@@ -398,6 +437,63 @@ void ActualizarRepuesto(){
             cout<<"Repuesto actualizado de forma exitosa"<<endl;
         }
     }
+}
+
+void ConsultarRepuesto(){
+    Spare s;
+    string line;
+    cout<<"Ingrese el id del repuesto del que desea hacer la consulta: ";
+    cin>>s.id_spare;
+
+    ifstream SpareFile("bin/Spare.csv");
+    while(getline(SpareFile,line)){
+        size_t pos = 0;
+        size_t next_pos = line.find(',');
+
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id==s.id_spare){
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.model = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.brand = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.spare_name = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.car_model = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.car_year = atoi(line.substr(pos, next_pos - pos).c_str());
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.price = atoi(line.substr(pos, next_pos - pos).c_str());
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            s.existences = atoi(line.substr(pos, next_pos - pos).c_str());
+            pos = next_pos + 1;
+
+            cout << "ID: " << s.id_spare << endl;
+            cout << "Modelo: " << s.model << endl;
+            cout << "Marca: " << s.brand << endl;
+            cout << "Nombre del repuesto: " << s.spare_name << endl;
+            cout << "Modelo del carro al que le sirve: " << s.car_model << endl;
+            cout << "Anio del carro al que le sirve: " << s.car_year << endl;
+            cout << "Precio: " << s.price << endl;
+            cout<< "Existencias: " << s.existences <<endl;
+        }
+    }
+    SpareFile.close();
+
 }
 
 void menu(){
