@@ -340,6 +340,58 @@ void ActualizarCliente(){
     }
 }
 
+void ConsultarCliente(){
+    Client c;
+    string line;
+    cout<<"Ingrese el id del cliente del que desea hacer la consulta: ";
+    cin>>c.id_client;
+
+    ifstream ClientsFile("bin/Clients.csv");
+    while(getline(ClientsFile,line)){
+        size_t pos = 0;
+        size_t next_pos = line.find(',');
+
+        int actual_id = atoi(line.substr(0,line.find(',')).c_str());
+        if(actual_id==c.id_client){
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.first_name = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.last_name = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.email = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.rented_vehicles = atoi(line.substr(pos, next_pos - pos).c_str());
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.direction = line.substr(pos, next_pos - pos);
+            pos = next_pos + 1;
+
+            next_pos = line.find(',', pos);
+            c.active = atoi(line.substr(pos, next_pos - pos).c_str());
+            pos = next_pos + 1;
+
+            cout << "ID: " << c.id_client << endl;
+            cout << "Nombre: " << c.first_name << endl;
+            cout << "Apellido: " << c.last_name << endl;
+            cout << "Email: " << c.email << endl;
+            cout << "Veiculos rentados: " << c.rented_vehicles << endl;
+            cout << "direccion: " << c.direction << endl;
+            cout << "Activo: " << c.active << endl;
+        }
+    }
+    ClientsFile.close();
+}
+
+
 void AgregarRepuesto(){
     Spare s;
     string line;
