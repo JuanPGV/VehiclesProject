@@ -336,6 +336,29 @@ void AgregarRepuesto(){
     cout<<"Repuesto agregado con exito"<<endl;
 }
 
+void EliminarRepuesto(){
+    Spare s;
+    string line;
+    ifstream SpareFile("bin/Spare.csv",ios::in);
+    ofstream Temp("bin/Temp.csv",ios::out);
+
+    cout<<"Ingrese el id del repuesto que desea eliminar: "<<endl;
+    cin>>s.id_spare;
+
+    while(getline(SpareFile,line)){
+        int id_actual = atoi(line.substr(0,line.find(',')).c_str());
+        if(id_actual!= s.id_spare){
+            Temp<<line<<endl;
+        }
+    }
+    SpareFile.close();
+    Temp.close();
+
+    remove("bin/Spare.csv");
+    rename("bin/Temp.csv","bin/Spare.csv");
+    cout<<"Repuesto eliminado con exito"<<endl;
+}
+
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
