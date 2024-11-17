@@ -66,8 +66,7 @@ void AgregarCarro(){
     Car c;
     string line;
     int newid = 0;
-    ifstream CarsFile("bin/Cars.csv");
-
+    ifstream CarsFile("../bin/Cars.csv");
     while(getline(CarsFile,line)){
         newid++;
     }
@@ -99,7 +98,7 @@ void AgregarCarro(){
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin>> c.id_client;
 
-    ofstream CarsFile2("bin/Cars.csv", ios::app);
+    ofstream CarsFile2("../bin/Cars.csv", ios::app);
     CarsFile2 << c.id << "," << c.model << "," << c.brand << "," << c.plate << "," << c.color << "," << c.year << "," << c.mileage << "," << c.was_rented << "," << c.engine << "," << c.price << "," << c.id_client <<endl;
     CarsFile2.close();
     cout<<"Carro agregado con exito"<<endl;
@@ -110,11 +109,11 @@ void EliminarCarro(){
     string line;
     cout<<"Ingrese el id del carro que desea eliminar: "<<endl;
     cin>>c.id;
-    ofstream Temp("bin/Temp.csv", ios::out);
+    ofstream Temp("../bin/Temp.csv", ios::out);
     if(!Temp){
         cout<<"El archivo temporal no se abrio correctamente"<<endl;
     }
-    ifstream Carsfile("bin/Cars.csv", ios::in);
+    ifstream Carsfile("../bin/Cars.csv", ios::in);
     if(!Carsfile){
         cout<<"El archivo de carros no se abrio correctamente"<<endl;
     }
@@ -127,8 +126,8 @@ void EliminarCarro(){
     Temp.close();
     Carsfile.close();
 
-    remove("bin/Cars.csv");
-    rename("bin/Temp.csv","bin/Cars.csv");
+    remove("../bin/Cars.csv");
+    rename("../bin/Temp.csv","../bin/Cars.csv");
     cout<<"Carro eliminado con exito"<<endl;
 }
 
@@ -137,8 +136,8 @@ void ActualizarCarro(){
     string line;
     cout<<"Ingrese el id del carro que quiere actualizar"<<endl;
     cin>>c.id;
-    ifstream CarsFile("bin/Cars.csv", ios::in);
-    ofstream Temp("bin/Temp.csv",ios::out);
+    ifstream CarsFile("../bin/Cars.csv", ios::in);
+    ofstream Temp("../bin/Temp.csv",ios::out);
     while(getline(CarsFile,line)){
         int actual_id = atoi(line.substr(0,line.find(',')).c_str());
         if(actual_id!=c.id){
@@ -173,8 +172,8 @@ void ActualizarCarro(){
             Temp.close();
             CarsFile.close();
 
-            remove("bin/Cars.csv");
-            rename("bin/Temp.csv","bin/Cars.csv");
+            remove("../bin/Cars.csv");
+            rename("../bin/Temp.csv","../bin/Cars.csv");
             cout<<"Carro actualizado de forma exitosa"<<endl;
         }
     }
@@ -186,7 +185,7 @@ void ConsultarCarro(){
     cout<<"Ingrese el id del carro del que desea hacer la consulta: ";
     cin>>c.id;
 
-    ifstream CarsFile("bin/Cars.csv");
+    ifstream CarsFile("../bin/Cars.csv");
     while(getline(CarsFile,line)){
         size_t pos = 0;
         size_t next_pos = line.find(',');
@@ -271,7 +270,7 @@ void AgregarCliente(){
      cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> c.active;
 
-    ofstream ClientsFile2("bin/Clients.csv", ios::app);
+    ofstream ClientsFile2("../bin/Clients.csv", ios::app);
     ClientsFile2 << c.id_client << "," << c.first_name << "," << c.last_name << "," << c.email << "," << c.rented_vehicles << "," << c.direction << "," << c.active <<endl;
     ClientsFile2.close();
     cout<<"Cliente agregado con exito"<<endl;
@@ -280,8 +279,8 @@ void AgregarCliente(){
 void EliminarCliente(){
     Client c;
     string line;
-    ifstream ClientsFile("bin/Clients.csv", ios::in);
-    ofstream Temp("bin/Temp.csv",ios::out);
+    ifstream ClientsFile("../bin/Clients.csv", ios::in);
+    ofstream Temp("../bin/Temp.csv",ios::out);
 
     cout<<"Ingrese el id del cliente que desea eliminar: ";
     cin>>c.id_client;
@@ -296,8 +295,8 @@ void EliminarCliente(){
     ClientsFile.close();
     Temp.close();
 
-    remove("bin/Clients.csv");
-    rename("bin/Temp.csv","bin/Clients.csv");
+    remove("../bin/Clients.csv");
+    rename("../bin/Temp.csv","bin/Clients.csv");
     cout<<"Cliente eliminado correctamente"<<endl;
 }
 
@@ -306,8 +305,8 @@ void ActualizarCliente(){
     string line;
     cout<<"Ingrese la cedula del cliente que quiere actualizar"<<endl;
     cin>>c.id_client;
-    ifstream ClientsFile("bin/Clients.csv", ios::in);
-    ofstream Temp("bin/Temp.csv",ios::out);
+    ifstream ClientsFile("../bin/Clients.csv", ios::in);
+    ofstream Temp("../bin/Temp.csv",ios::out);
     while(getline(ClientsFile,line)){
         int actual_id = atoi(line.substr(0,line.find(',')).c_str());
         if(actual_id!=c.id_client){
@@ -333,8 +332,8 @@ void ActualizarCliente(){
             Temp << c.id_client << "," << c.first_name << "," << c.last_name << "," << c.email << "," << c.rented_vehicles << "," << c.direction << "," << c.active <<endl;
             Temp.close();
             ClientsFile.close();
-            remove("bin/Clients.csv");
-            rename("bin/Temp.csv","bin/Clients.csv");
+            remove("../bin/Clients.csv");
+            rename("../bin/Temp.csv","../bin/Clients.csv");
             cout<<"Cliente actualizado de forma exitosa"<<endl;
         }
     }
@@ -346,7 +345,7 @@ void ConsultarCliente(){
     cout<<"Ingrese el id del cliente del que desea hacer la consulta: ";
     cin>>c.id_client;
 
-    ifstream ClientsFile("bin/Clients.csv");
+    ifstream ClientsFile("../bin/Clients.csv");
     while(getline(ClientsFile,line)){
         size_t pos = 0;
         size_t next_pos = line.find(',');
@@ -396,7 +395,7 @@ void AgregarRepuesto(){
     Spare s;
     string line;
     int new_id = 0;
-    ifstream SpareFile("bin/Spare.csv");
+    ifstream SpareFile("../bin/Spare.csv");
     while(getline(SpareFile,line)){
         new_id++;   
     }
@@ -421,7 +420,7 @@ void AgregarRepuesto(){
     cin >> s.existences;
     s.id_spare = new_id;
 
-    ofstream SpareFile2("bin/Spare.csv", ios::app);
+    ofstream SpareFile2("../bin/Spare.csv", ios::app);
     SpareFile2 << s.id_spare << "," << s.model << "," << s.brand << "," << s.spare_name << "," << s.car_model << "," << s.car_year << "," << s.price << "," << s.existences  <<endl;
     SpareFile2.close();
     cout<<"Repuesto agregado con exito"<<endl;
@@ -430,8 +429,8 @@ void AgregarRepuesto(){
 void EliminarRepuesto(){
     Spare s;
     string line;
-    ifstream SpareFile("bin/Spare.csv",ios::in);
-    ofstream Temp("bin/Temp.csv",ios::out);
+    ifstream SpareFile("../bin/Spare.csv",ios::in);
+    ofstream Temp("../bin/Temp.csv",ios::out);
 
     cout<<"Ingrese el id del repuesto que desea eliminar: "<<endl;
     cin>>s.id_spare;
@@ -445,8 +444,8 @@ void EliminarRepuesto(){
     SpareFile.close();
     Temp.close();
 
-    remove("bin/Spare.csv");
-    rename("bin/Temp.csv","bin/Spare.csv");
+    remove("../bin/Spare.csv");
+    rename("../bin/Temp.csv","../bin/Spare.csv");
     cout<<"Repuesto eliminado con exito"<<endl;
 }
 
@@ -455,8 +454,8 @@ void ActualizarRepuesto(){
     string line;
     cout<<"Ingrese el id del repuesto que quiere actualizar"<<endl;
     cin>>s.id_spare;
-    ifstream SpareFile("bin/Spare.csv", ios::in);
-    ofstream Temp("bin/Temp.csv",ios::out);
+    ifstream SpareFile("../bin/Spare.csv", ios::in);
+    ofstream Temp("../bin/Temp.csv",ios::out);
     while(getline(SpareFile,line)){
         int actual_id = atoi(line.substr(0,line.find(',')).c_str());
         if(actual_id!=s.id_spare){
@@ -484,8 +483,8 @@ void ActualizarRepuesto(){
             Temp << s.id_spare << "," << s.model << "," << s.brand << "," << s.spare_name << "," << s.car_model << "," << s.car_year << "," << s.price << "," << s.existences  <<endl;
             Temp.close();
             SpareFile.close();
-            remove("bin/Spare.csv");
-            rename("bin/Temp.csv","bin/Spare.csv");
+            remove("../bin/Spare.csv");
+            rename("../bin/Temp.csv","../bin/Spare.csv");
             cout<<"Repuesto actualizado de forma exitosa"<<endl;
         }
     }
@@ -497,7 +496,7 @@ void ConsultarRepuesto(){
     cout<<"Ingrese el id del repuesto del que desea hacer la consulta: ";
     cin>>s.id_spare;
 
-    ifstream SpareFile("bin/Spare.csv");
+    ifstream SpareFile("../bin/Spare.csv");
     while(getline(SpareFile,line)){
         size_t pos = 0;
         size_t next_pos = line.find(',');
