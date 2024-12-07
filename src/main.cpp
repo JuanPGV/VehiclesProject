@@ -25,7 +25,8 @@ class Car{
     void ConsultarCarro();
 };
 
-struct Client{
+class Client{
+    public:
     int id_client;
     string first_name;
     string last_name;
@@ -33,6 +34,11 @@ struct Client{
     int rented_vehicles;
     string direction;
     int active;
+
+    void AgregarCliente();
+    void EliminarCliente();
+    void ActualizarCliente();
+    void ConsultarCliente();
 };
 
 struct Spare{
@@ -47,11 +53,6 @@ struct Spare{
 };
 
 void menu();
-
-void AgregarCliente();
-void EliminarCliente();
-void ActualizarCliente();
-void ConsultarCliente();
 
 void AgregarRepuesto();
 void EliminarRepuesto();
@@ -249,7 +250,7 @@ void Car::ConsultarCarro(){
     CarsFile.close();
 }
 
-void AgregarCliente(){
+void Client::AgregarCliente(){
     Client c;
     string line;
 
@@ -277,7 +278,7 @@ void AgregarCliente(){
     cout<<"Cliente agregado con exito"<<endl;
 }
 
-void EliminarCliente(){
+void Client::EliminarCliente(){
     Client c;
     string line;
     ifstream ClientsFile("../bin/Clients.csv", ios::in);
@@ -297,11 +298,11 @@ void EliminarCliente(){
     Temp.close();
 
     remove("../bin/Clients.csv");
-    rename("../bin/Temp.csv","bin/Clients.csv");
+    rename("../bin/Temp.csv","../bin/Clients.csv");
     cout<<"Cliente eliminado correctamente"<<endl;
 }
 
-void ActualizarCliente(){
+void Client::ActualizarCliente(){
     Client c;
     string line;
     cout<<"Ingrese la cedula del cliente que quiere actualizar"<<endl;
@@ -340,7 +341,7 @@ void ActualizarCliente(){
     }
 }
 
-void ConsultarCliente(){
+void Client::ConsultarCliente(){
     Client c;
     string line;
     cout<<"Ingrese el id del cliente del que desea hacer la consulta: ";
@@ -551,6 +552,7 @@ void ConsultarRepuesto(){
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
     Car carros;
+    Client clientes;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
     while(opcion!=5){
     cout<<"Ingrese una opcion"<<endl
@@ -574,7 +576,7 @@ void menu(){
             carros.AgregarCarro();
         }
         else if(opcion2==2){
-            AgregarCliente();
+            clientes.AgregarCliente();
         }
         else if(opcion2==3){
             AgregarRepuesto();
@@ -597,7 +599,7 @@ void menu(){
             carros.EliminarCarro();
         }
         else if(opcion3==2){
-            EliminarCliente();
+            clientes.EliminarCliente();
         }
         else if(opcion3==3){
             EliminarRepuesto();
@@ -621,7 +623,7 @@ void menu(){
            carros.ActualizarCarro();
         }
         else if(opcion4==2){
-            ActualizarCliente();
+            clientes.ActualizarCliente();
         }
         else if(opcion4==3){
             ActualizarRepuesto();
@@ -644,7 +646,7 @@ void menu(){
             carros.ConsultarCarro();
         }
         else if(opcion5==2){
-            ConsultarCliente();
+            clientes.ConsultarCliente();
         }
         else if(opcion5==3){
             ConsultarRepuesto();
