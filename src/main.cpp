@@ -5,7 +5,8 @@
 #include<limits>
 using namespace std;
 
-struct Car{
+class Car{
+    public:
     int id;
     string model;
     string brand;
@@ -17,6 +18,11 @@ struct Car{
     string engine;
     int price;
     int id_client;
+
+    void AgregarCarro();
+    void EliminarCarro();
+    void ActualizarCarro();
+    void ConsultarCarro();
 };
 
 struct Client{
@@ -42,11 +48,6 @@ struct Spare{
 
 void menu();
 
-void AgregarCarro();
-void EliminarCarro();
-void ActualizarCarro();
-void ConsultarCarro();
-
 void AgregarCliente();
 void EliminarCliente();
 void ActualizarCliente();
@@ -62,7 +63,7 @@ int main(){
 menu();
 }
 
-void AgregarCarro(){
+void Car::AgregarCarro(){
     Car c;
     string line;
     int newid = 0;
@@ -104,7 +105,7 @@ void AgregarCarro(){
     cout<<"Carro agregado con exito"<<endl;
     }
 
-void EliminarCarro(){
+void Car::EliminarCarro(){
     Car c;
     string line;
     cout<<"Ingrese el id del carro que desea eliminar: "<<endl;
@@ -131,7 +132,7 @@ void EliminarCarro(){
     cout<<"Carro eliminado con exito"<<endl;
 }
 
-void ActualizarCarro(){
+void Car::ActualizarCarro(){
     Car c;
     string line;
     cout<<"Ingrese el id del carro que quiere actualizar"<<endl;
@@ -179,7 +180,7 @@ void ActualizarCarro(){
     }
 }
 
-void ConsultarCarro(){
+void Car::ConsultarCarro(){
     Car c;
     string line;
     cout<<"Ingrese el id del carro del que desea hacer la consulta: ";
@@ -549,6 +550,7 @@ void ConsultarRepuesto(){
 
 void menu(){
     int opcion=0,opcion2=0,opcion3=0,opcion4=0,opcion5=0;
+    Car carros;
      cout<<"Bienvenido a Vehiculos El Torito!!"<<endl;
     while(opcion!=5){
     cout<<"Ingrese una opcion"<<endl
@@ -569,7 +571,7 @@ void menu(){
             cin>>opcion2;
 
         if(opcion2==1){
-            AgregarCarro();
+            carros.AgregarCarro();
         }
         else if(opcion2==2){
             AgregarCliente();
@@ -592,7 +594,7 @@ void menu(){
             cin>>opcion3;
 
         if(opcion3==1){
-            EliminarCarro();
+            carros.EliminarCarro();
         }
         else if(opcion3==2){
             EliminarCliente();
@@ -616,7 +618,7 @@ void menu(){
             cin>>opcion4;
 
         if(opcion4==1){
-           ActualizarCarro();
+           carros.ActualizarCarro();
         }
         else if(opcion4==2){
             ActualizarCliente();
@@ -639,7 +641,7 @@ void menu(){
             cin>>opcion5;
 
         if(opcion5==1){
-            ConsultarCarro();
+            carros.ConsultarCarro();
         }
         else if(opcion5==2){
             ConsultarCliente();
